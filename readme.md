@@ -1,6 +1,6 @@
 # NumericalMethods-Excel
 
-This repository is a "Library" to generate output to excel files. Using [jmcnamara](https://github.com/jmcnamara)'s [libxlsxwriter](https://github.com/jmcnamara/libxlsxwriter) at version 1.1.4. Numerical methods used in the code, is a user-generated methods, so expect no pre-defined methods ready to use.
+This repository is a "Library" to generate output to excel files. Using [jmcnamara](https://github.com/jmcnamara)'s [libxlsxwriter](https://github.com/jmcnamara/libxlsxwriter). Numerical methods used in the code, is a user-generated methods, so expect no pre-defined methods ready to use.
 
 Personally, this will be useful for me to code Numerical Method stuffs for my class without the need to create another function in header and then calling it from main. Just create a method and then adding it at the same c++ file.
 
