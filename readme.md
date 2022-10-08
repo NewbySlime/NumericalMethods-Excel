@@ -4,6 +4,8 @@ This repository is a "Library" to generate output to excel files. For methods, i
 
 Personally, this will be useful for me to code Numerical Method stuffs for my class without the need to create another function in header and then calling it from main. Just create a method and then adding it at the same c++ file.
 
+If you want to know what I mean, you can check the source codes on **v1** folder
+
 ## Building
 
 Using c++ and c compiler and using make to automate it. Just call make to build it.
