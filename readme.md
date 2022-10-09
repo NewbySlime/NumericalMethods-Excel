@@ -23,3 +23,6 @@ make library
 For usage, mainly depends on the user-generated methods. Except for first question, it will ask for the name of the file you want to create (with or without '.xlsx'). Then after it, you will be prompted based on the parameters of the user-generated methods.
 
 On user-generated side, you can create a function of the method, and then adding it using ADD_METHOD. For reference, you can check **methods.cpp**.
+
+## Note
+I made it in 2 days, expect some segmentation fault. A bit stable AFAIK.
