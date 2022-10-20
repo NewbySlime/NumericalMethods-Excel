@@ -4,6 +4,7 @@
 
 #include "../Libraries/libxlsxw/include/xlsxwriter.h"
 #include "method.h"
+#include "editing.h"
 
 #define _iter_attr_name "Iteration"
 
@@ -20,6 +21,17 @@ lxw_worksheet *currws;
 
 static vector<method_data*> *_m_datas = NULL;
 method_data *currmd;
+
+
+// editing.h functions
+void init_table(int row){
+  for(int o = 0; o < currmd->datatype.size(); o++)
+    worksheet_write_string(currws, row, o, currmd->datatype[o].first.c_str(), NULL);
+}
+
+void add_text(int row, int col, const char *str){
+  worksheet_write_string(currws, row, col, str, NULL);
+}
 
 
 double get_double(){
@@ -39,11 +51,8 @@ void output_method(int i, ...){
   va_list _arg;
   va_start(_arg, i);
 
-  i++;
-  worksheet_write_number(currws, i, 0, i, NULL);
-  for(int _i = 1; _i <= currmd->datatype.size(); _i++){
-    switch(currmd->datatype[_i-1].second){
-
+  for(int _i = 0; _i < currmd->datatype.size(); _i++){
+    switch(currmd->datatype[_i].second){
       break; case data_type::dt_float:
         case data_type::dt_double:{
         double _r = va_arg(_arg, double);
@@ -77,10 +86,6 @@ void call_all_method(){
 
       cout << endl << "Processing " << _data->method_name << "..." << endl;
       currws = workbook_add_worksheet(currwb, _data->method_name.c_str());
-
-      worksheet_write_string(currws, 0, 0, _iter_attr_name, NULL);
-      for(int o = 0; o < _data->datatype.size(); o++)
-        worksheet_write_string(currws, 0, o+1, _data->datatype[o].first.c_str(), NULL);
       
       _smallestd = INFINITY;
       _smallestiter = 0;
