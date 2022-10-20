@@ -22,11 +22,13 @@ lxw_worksheet *currws;
 static vector<method_data*> *_m_datas = NULL;
 method_data *currmd;
 
+lxw_format *_def_tableheadfmt;
+
 
 // editing.h functions
 void init_table(int row){
   for(int o = 0; o < currmd->datatype.size(); o++)
-    worksheet_write_string(currws, row, o, currmd->datatype[o].first.c_str(), NULL);
+    worksheet_write_string(currws, row, o, currmd->datatype[o].first.c_str(), _def_tableheadfmt);
 }
 
 void add_text(int row, int col, const char *str){
@@ -155,8 +157,15 @@ int main(){
   }
 
   currwb = workbook_new(filename.c_str());
-  call_all_method();
 
+
+  // setting up default variables
+  _def_tableheadfmt = workbook_add_format(currwb);
+  format_set_bg_color(_def_tableheadfmt, LXW_COLOR_CYAN);
+  format_set_border(_def_tableheadfmt, LXW_BORDER_THIN);
+
+
+  call_all_method();
   workbook_close(currwb);
   cout << "Done calculating!" << endl;
 }

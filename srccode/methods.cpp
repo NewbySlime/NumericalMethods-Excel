@@ -45,8 +45,6 @@ void metode_iterasi_sederhana(Parameters param, output_callback output){
   };
 
   for(int _if = 0; _if < _func.size(); _if++){
-    _coliter += 2;
-
     string _fname = "Fungsi ke-" + to_string(_if+1);
     add_text(_coliter++, 0, _fname.c_str());
     init_table(_coliter++);
@@ -60,6 +58,8 @@ void metode_iterasi_sederhana(Parameters param, output_callback output){
       output(_coliter++, i+1, x0, x, _err);
       x0 = x;
     }
+
+    _coliter += 2;
   }
 }
 
